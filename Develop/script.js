@@ -1,4 +1,4 @@
-//Creates array for each hour of today
+// Creates array for each hour of today
 var day = [
     {
         id: "0",
@@ -93,25 +93,25 @@ var day = [
     },
 ]
 
-//Uses moment.js to  find today's date
+// Uses moment.js to  find today's date
 function todayDate() {
-    var currentDay = moment().format("MMM Do YY");
+    var currentDay = moment().format("dddd, MMMM Do YYYY");
     $("#currentDay").text(currentDay);
 }
 
 todayDate();
 
-//Saves reminders
+// Saves reminders
 function saveReminders() {
     localStorage.setItem("day", JSON.stringify("day"));
 }
 
-//Displays reminders 
+// Displays reminders 
 function displayReminders() {
     
 }
 
-//Checks and applies and saved reminders upon page load
+// Checks and applies and saved reminders upon page load
 function loadReminders () {
     var storedReminder = JSON.parse(localStorage.getItem("day"));
 
@@ -123,4 +123,29 @@ function loadReminders () {
     displayReminders();
 }
 
+// Displays blocks of time as hours
+day.forEach(function(currentHour) {
+    // Creates a row that the time, reminder and save button will sit on
+    var timeBlock = $("<form>").attr({
+        "class" : "row"
+    });
+    $(".container").append(timeBlock);
+
+    // Creates the hour block of the time row
+    var hourTime;
+
+    // Creates the reminder block of the time row
+    var hourReminder;
+
+    // Creates the save block of the time row
+    var hourSave;
+})
+
 loadReminders();
+
+$(".saveBtn").on("click", function(event) {
+    event.preventDefault();
+
+    saveReminders();
+    displayReminders();
+})
