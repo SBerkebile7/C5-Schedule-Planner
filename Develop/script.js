@@ -1,94 +1,94 @@
 // Creates array for each hour of today
-var day = [
+var thisDay = [
     {
         id: "0",
         hour: "6",
         time: "6",
-        merdiem: "am",
+        meridiem: "am",
         schedule: ""
     },
     {
         id: "1",
         hour: "7",
         time: "7",
-        merdiem: "am",
+        meridiem: "am",
         schedule: ""
     },
     {
         id: "2",
         hour: "8",
         time: "8",
-        merdiem: "am",
+        meridiem: "am",
         schedule: ""
     },
     {
         id: "3",
         hour: "9",
         time: "9",
-        merdiem: "am",
+        meridiem: "am",
         schedule: ""
     },
     {
         id: "4",
         hour: "10",
         time: "10",
-        merdiem: "am",
+        meridiem: "am",
         schedule: ""
     },
     {
         id: "5",
         hour: "11",
         time: "11",
-        merdiem: "am",
+        meridiem: "am",
         schedule: ""
     },
     {
         id: "6",
         hour: "12",
         time: "12",
-        merdiem: "pm",
+        meridiem: "pm",
         schedule: ""
     },
     {
         id: "7",
         hour: "1",
         time: "13",
-        merdiem: "pm",
+        meridiem: "pm",
         schedule: ""
     },
     {
         id: "8",
         hour: "2",
         time: "14",
-        merdiem: "pm",
+        meridiem: "pm",
         schedule: ""
     },
     {
         id: "9",
         hour: "3",
         time: "15",
-        merdiem: "pm",
+        meridiem: "pm",
         schedule: ""
     },
     {
         id: "10",
         hour: "4",
         time: "16",
-        merdiem: "pm",
+        meridiem: "pm",
         schedule: ""
     },
     {
         id: "11",
         hour: "5",
         time: "17",
-        merdiem: "pm",
+        meridiem: "pm",
         schedule: ""
     },
     {
         id: "12",
         hour: "6",
         time: "18",
-        merdiem: "pm",
+        meridiem: "pm",
         schedule: ""
     },
 ]
@@ -103,22 +103,22 @@ todayDate();
 
 // Saves schedule reminders
 function saveSchedule() {
-    localStorage.setItem("day", JSON.stringify(day));
+    localStorage.setItem("thisDay", JSON.stringify(thisDay));
 }
 
 // Displays schedule reminders 
 function displaySchedule() {
-    day.forEach(function(_hourTime) {
-        $(`#${_hourTime.id}`).val(_hourTime.schedule)
+    thisDay.forEach(function (_currentHour) {
+        $(`#${_currentHour.id}`).val(_currentHour.schedule);
     })
 }
 
 // Checks and applies and saved schedule reminders upon page load
 function loadSchedule () {
-    var storedSchedule = JSON.parse(localStorage.getItem("day"));
+    var storedSchedule = JSON.parse(localStorage.getItem("thisDay"));
 
     if(storedSchedule) {
-        day = storedSchedule;
+        thisDay = storedSchedule;
     }
 
     saveSchedule();
@@ -126,7 +126,7 @@ function loadSchedule () {
 }
 
 // Displays blocks of time as hours
-day.forEach(function(currentHour) {
+thisDay.forEach(function(currentHour) {
     // Creates a row that the time, reminder and save button will sit on
     var timeBlock = $("<form>").attr({
         "class" : "row"
