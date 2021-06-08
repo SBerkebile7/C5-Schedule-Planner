@@ -129,7 +129,7 @@ function loadSchedule () {
 thisDay.forEach(function(currentHour) {
     // Creates a row that the time, reminder and save button will sit on
     var timeBlock = $("<form>").attr({
-        "class" : "row"
+        "class": "row"
     });
     $(".container").append(timeBlock);
 
@@ -141,7 +141,7 @@ thisDay.forEach(function(currentHour) {
     });
 
     // Creates the reminder block of the time row
-    var hourReminder = $("<div>")
+    var hourSchedule = $("<div>")
     .attr({
         "class": "col-md-9 description p-0"
     });
@@ -149,33 +149,33 @@ thisDay.forEach(function(currentHour) {
     // Adjusts the time row to reflect past, present or future
     var timeColorAdjust = $("<textarea>");
 
-    hourReminder.append(timeColorAdjust);
+    hourSchedule.append(timeColorAdjust);
     timeColorAdjust.attr("id", currentHour.id);
 
     // Checks current time and assigns class based on past/present/future to row
     if(currentHour.time < moment().format("HH")) {
         timeColorAdjust.attr ({
-            "class" : "past"
+            "class": "past"
         })
     } else if(currentHour.time === moment().format("HH")) {
         timeColorAdjust.attr ({
-            "class" : "present"
+            "class": "present"
         })
     } else if(currentHour.time > moment().format("HH")) {
         timeColorAdjust.attr ({
-            "class" : "future"
+            "class": "future"
         })
     }
 
     // Creates the save block of the time row
-    var hourSaveBtn = $("<i class='far fa-solid fa-floppy-disks fa-lg'</i>");
+    var hourSaveBtn = $("<i class='fa-solid fa-floppy-disks fa-lg'></i>");
     var hourSave = $("<button>")
     .attr({
         "class" : "col-md-1 saveBtn"
     });
 
     hourSave.append(hourSaveBtn)
-    timeBlock.append(hourTime, hourReminder, hourSave);
+    timeBlock.append(hourTime, hourSchedule, hourSave);
 })
 
 loadSchedule();
@@ -183,6 +183,9 @@ loadSchedule();
 $(".saveBtn").on("click", function(event) {
     event.preventDefault();
 
-    saveReminders();
-    displayReminders();
+    var saveInfo = $(this).siblings(".description").children(".future").attr("id");
+    thisDay[saveInfo].schedule = $(this).siblings(".description").children(".future").val();
+
+    saveSchedule();
+    displaySchedule();
 })
