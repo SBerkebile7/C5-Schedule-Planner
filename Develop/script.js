@@ -100,3 +100,27 @@ function todayDate() {
 }
 
 todayDate();
+
+//Saves reminders
+function saveReminders() {
+    localStorage.setItem("day", JSON.stringify("day"));
+}
+
+//Displays reminders 
+function displayReminders() {
+    
+}
+
+//Checks and applies and saved reminders upon page load
+function loadReminders () {
+    var storedReminder = JSON.parse(localStorage.getItem("day"));
+
+    if(storedReminder) {
+        day = storedReminder;
+    }
+
+    saveReminders();
+    displayReminders();
+}
+
+loadReminders();
