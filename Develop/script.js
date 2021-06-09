@@ -3,28 +3,28 @@ var thisDay = [
     {
         id: "0",
         hour: "6",
-        time: "6",
+        time: "06",
         meridiem: "am",
         schedule: ""
     },
     {
         id: "1",
         hour: "7",
-        time: "7",
+        time: "07",
         meridiem: "am",
         schedule: ""
     },
     {
         id: "2",
         hour: "8",
-        time: "8",
+        time: "08",
         meridiem: "am",
         schedule: ""
     },
     {
         id: "3",
         hour: "9",
-        time: "9",
+        time: "09",
         meridiem: "am",
         schedule: ""
     },
@@ -143,7 +143,7 @@ thisDay.forEach(function(currentHour) {
     // Creates the reminder block of the time row
     var hourSchedule = $("<div>")
     .attr({
-        "class": "col-md-9 description p-0"
+        "class": "col-md-10 description p-0"
     });
     
     // Adjusts the time row to reflect past, present or future
@@ -168,13 +168,13 @@ thisDay.forEach(function(currentHour) {
     }
 
     // Creates the save block of the time row
-    var hourSaveBtn = $("<i class='fa-solid fa-floppy-disks fa-lg'></i>");
+    var hourSaveIcon = $("<i class='fas fa-save fa-lg'></i>");
     var hourSave = $("<button>")
     .attr({
         "class" : "col-md-1 saveBtn"
     });
 
-    hourSave.append(hourSaveBtn)
+    hourSave.append(hourSaveIcon);
     timeBlock.append(hourTime, hourSchedule, hourSave);
 })
 
