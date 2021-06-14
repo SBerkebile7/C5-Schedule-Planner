@@ -11,5 +11,8 @@ A website that provides the ability to update a planner for your day. The planne
 ## Website
 https://SBerkebile7.github.io/C5-Schedule-Planner/
 
+## GitHub Repository
+https://github.com/SBerkebile7/C5-Schedule-Planner
+
 ## Contribution
 Made by Spencer
